@@ -6,20 +6,21 @@ import style from "./loginpage.module.scss";
 import axios from "axios"
 export default function LoginPage() {
     const [user, setUser] = React.useState({
-        "username": "",
-        "flatNo": "",
-        "vNumber": "",
-        "pslot": "",
-        "level": "",
-        "phoneNo": "",
-        "email": "",
+        username: "",
+        flatNo: "",
+        vNumber: "",
+        pslot: "",
+        level: "",
+        phoneNo: "",
+        email: "",
     });
 
     async function onSubmittest(event) {
+
         try {
             event.preventDefault()
             const response = await axios.post("/api/user", user);
-
+            console.log("submited", response.data);
         } catch (error) {
 
             console.log("Login failed", error.message);
@@ -51,7 +52,7 @@ export default function LoginPage() {
                 </div>
                 <div className="w-full h-20 flex-col justify-center items-start gap-1 inline-flex">
                     <div className="text-white text-xl font-medium">Floor / Level</div>
-                    <input required={true} name='level' className="w-full h-10 p-2 bg-white rounded-lg" value={user.level} onChange={(e) => setUser({ ...user, level: e.target.value })} />
+                    <input type='number' required={true} name='level' className="w-full h-10 p-2 bg-white rounded-lg" value={user.level} onChange={(e) => setUser({ ...user, level: e.target.value })} />
                 </div>
                 <div className="w-full h-20 flex-col justify-center items-start gap-1 inline-flex">
                     <div className="text-white text-xl font-medium">Whatsapp Contact No.</div>

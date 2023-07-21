@@ -26,17 +26,12 @@ export async function POST(req) {
         })
 
         const allUsers = await prisma.User.findMany()
-        console.log(allUsers)
-
         await prisma.$disconnect()
-
-
         // var res = await axios.post("https://cloud.rapbooster.com/api/sendMsg", {
         //     msg: msg,
         //     apiAuthkey: authKey,
         //     receiverMobile: `91${phoneNo}`
         // })
-
         return NextResponse.json(allUsers, { status: 200 })
 
     } catch (error) {

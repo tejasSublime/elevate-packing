@@ -21,3 +21,18 @@ model User {
   phoneNo   String?  @unique
   createdAt DateTime @default(now())
 }
+
+model Operator {
+  operatorId     Int     @id @default(autoincrement())
+  name           String?
+  operatorUserId String? @unique
+  password       String?
+  level          Int?
+}
+
+model RequestUser {
+  requestId Int      @id @default(autoincrement())
+  userId    Int
+  level     Int?
+  createdAt DateTime @default(now())
+}
